@@ -87,7 +87,7 @@ from app.routes import hardware_routes # Hardware routes
 from app.routes import license_routes # License routes
 from app.routes import web_access_routes # Web Access routes
 from app.routes import export_routes # Export routes
-from app.routes import analysis_routes # Analysis routes
+from app.routes import analysis_routes # Clean re-import for analysis_routes
 # from app.routes import asset_assignment_routes # Future Assignment routes
 
 app.include_router(auth_routes.router)
@@ -96,5 +96,5 @@ app.include_router(hardware_routes.router)
 app.include_router(license_routes.router)
 app.include_router(web_access_routes.router)
 app.include_router(export_routes.router)
-app.include_router(analysis_routes.router)
+app.include_router(analysis_routes.router) # Clean re-inclusion for analysis_routes
 # app.include_router(asset_assignment_routes.router)
