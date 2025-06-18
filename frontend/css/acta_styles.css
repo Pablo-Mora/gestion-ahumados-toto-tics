@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+.toolbar {
+    padding: 10px 20px;
+    background-color: #333;
+    text-align: right;
+    position: fixed; /* Keep toolbar on top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001; /* Ensure it's above acta content before print */
+}
+.toolbar button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.toolbar button:hover {
+    background-color: #0056b3;
+}
+
+.acta-container {
+    width: 210mm; /* A4 width */
+    min-height: 277mm; /* Adjusted for padding, A4 height is 297mm */
+    padding: 15mm; /* Consistent padding */
+    margin: 60px auto 20px auto; /* Margin: 60px top for fixed toolbar, auto horiz, 20px bottom */
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+.acta-header {
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+.acta-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    color: #007bff;
+}
+.acta-header p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.employee-details, .asset-list, .signatures, footer {
+    margin-bottom: 25px;
+}
+.employee-details p, .asset-list p {
+    margin: 5px 0;
+}
+h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-top: 0; /* Remove default top margin for h2 */
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 18px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+.signatures {
+    display: flex;
+    justify-content: space-between; /* Space out signature blocks */
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.signature-block {
+    text-align: center;
+    width: 45%; /* Adjust width for better spacing */
+}
+.signature-line {
+    margin-bottom: 5px; /* Space above name/title */
+}
+.signature-block p {
+    margin: 5px 0; /* Adjust spacing within signature block */
+}
+footer {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    color: #777;
+}
+
+/* Styles for html2pdf printing */
+@media print {
+    body {
+        background-color: white; /* Ensure background is white for printing */
+        -webkit-print-color-adjust: exact; /* Ensure Chrome prints background colors if any are essential */
+        print-color-adjust: exact;
+    }
+    .toolbar {
+        display: none !important; /* Hide toolbar when printing */
+    }
+    .acta-container {
+        margin: 0 auto; /* Center on page, remove specific top margin for print */
+        box-shadow: none; /* No shadow for print */
+        border: none; /* No border for print if desired */
+        padding: 10mm; /* Reduce padding slightly for print if needed */
+        width: 100%; /* Use full printable width */
+        min-height: auto; /* Let content define height */
+    }
+    /* Consider adjusting font sizes for print if needed */
+}

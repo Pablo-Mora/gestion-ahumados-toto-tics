@@ -1,0 +1,315 @@
+/* General body and login styles from previous steps */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    /* display: flex; justify-content: center; align-items: center; min-height: 100vh; -- Remove for dashboard */
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 300px;
+    /* For login page centering if body flex is removed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; }
+.form-group input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover { background-color: #0056b3; }
+.error-message { color: red; font-size: 0.9em; margin-top: 10px; text-align: center;}
+
+
+/* Dashboard Layout Styles */
+.dashboard-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Prevents scrollbars on the body itself */
+}
+
+.sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    background-color: #333; /* Dark sidebar */
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Full height */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.sidebar-header h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Allows nav to take available space */
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 10px 15px;
+    color: #ddd; /* Lighter text for readability */
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 5px; /* Space between nav items */
+}
+
+.sidebar-nav li a:hover, .sidebar-nav li a.active {
+    background-color: #555; /* Highlight for hover/active */
+    color: #fff;
+}
+
+.sidebar-footer {
+    border-top: 1px solid #555;
+    padding-top: 15px;
+    font-size: 0.9em;
+    text-align: center; /* Center footer content */
+}
+.sidebar-footer button {
+    background-color: #d9534f; /* Red for logout */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top:10px;
+    width: auto; /* Override full width for this button */
+}
+.sidebar-footer button:hover{
+    background-color: #c9302c;
+}
+
+
+.main-content {
+    flex-grow: 1; /* Takes remaining width */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Full height */
+    overflow: hidden; /* Only content-area scrolls */
+    background-color: #f8f9fa; /* Light background for content */
+}
+
+.main-header {
+    background-color: #fff; /* White header */
+    padding: 15px 20px;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex; /* For aligning items if needed */
+    justify-content: space-between; /* Example for items in header */
+    align-items: center;
+    height: 60px; /* Fixed header height */
+    box-sizing: border-box;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+.main-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.content-area {
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling for content area */
+    flex-grow: 1; /* Takes available vertical space */
+    background-color: #fff; /* Content background */
+}
+
+/* Table styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 10px; /* Increased padding */
+    text-align: left;
+}
+.data-table th {
+    background-color: #e9ecef; /* Lighter header for table */
+    color: #495057;
+    font-weight: bold;
+}
+.data-table tr:nth-child(even) {
+    background-color: #f8f9fa; /* Zebra striping for rows */
+}
+.data-table tr:hover {
+    background-color: #f1f1f1; /* Hover effect */
+}
+
+.table-actions button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size:0.9em;
+    width: auto; /* override general button width */
+    border-radius: 3px;
+}
+.btn-edit { background-color: #ffc107; color: #212529; border:none; }
+.btn-edit:hover { background-color: #e0a800; }
+.btn-delete { background-color: #dc3545; color:white; border:none;}
+.btn-delete:hover { background-color: #c82333; }
+
+/* General container and heading styles from before (adjust if needed) */
+.container { padding: 20px; }
+h2 { color: #333; margin-top: 0;}
+
+/* Chart image styling */
+.content-area img {
+    max-width: 100%; /* Ensure images are responsive within content area */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Table Controls (like search input) */
+.table-controls {
+    margin-bottom: 15px;
+    display: flex; /* For layout if more controls are added */
+    justify-content: space-between; /* Example: search on left, other buttons on right */
+    align-items: center;
+}
+.table-controls input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px; /* Adjust as needed */
+    font-size: 0.95em;
+}
+.table-controls .btn-add { /* If Add button is moved into table-controls */
+    width: auto; /* Override full-width button style */
+    padding: 8px 15px;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-button:hover, .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content .form-group { margin-bottom: 10px;} /* Less margin inside modal */
+.modal-content button[type="submit"] { margin-top: 15px; }
+
+/* Global Message Styles */
+.global-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Green for success */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    z-index: 1001; /* Above modal backdrop but potentially below modal content if not handled */
+    display: none; /* Hidden by default */
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.global-message.error {
+    background-color: #f44336; /* Red for error */
+}
+.global-message.info {
+    background-color: #2196F3; /* Blue for info */
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    display: none; /* Hidden on larger screens */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1005; /* Above sidebar and potentially other elements */
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.sidebar-toggle:hover {
+    background-color: #555;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -255px; /* Initially hidden, width + padding */
+        z-index: 1000; /* Ensure sidebar is on top of content but below toggle */
+        transition: left 0.3s ease;
+        /* height: 100vh; already set */
+        /* box-shadow: 2px 0 5px rgba(0,0,0,0.1); already set */
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    .main-content {
+        margin-left: 0; /* Main content takes full width when sidebar is hidden */
+        transition: margin-left 0.3s ease; /* Smooth transition for content push */
+    }
+    .sidebar-toggle {
+        display: block; /* Show toggle button on smaller screens */
+    }
+    /* Optional: Push content when sidebar is open on mobile, if not an overlay */
+    /* .dashboard-container.sidebar-open .main-content {
+        margin-left: 250px;
+    } */
+}

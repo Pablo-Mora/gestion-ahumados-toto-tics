@@ -12,11 +12,26 @@ from . import schemas as auth_schemas
 from . import models as auth_models # Renamed to avoid conflict
 from app.crud import user as user_crud # Import user CRUD functions
 from app.database import get_db # Import get_db dependency
+import os
+from dotenv import load_dotenv # Optional: for local .env file loading during development
 
-# Configuration (replace with actual configuration management)
-SECRET_KEY = "your-secret-key"  # KEEP THIS SECRET IN PRODUCTION
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+load_dotenv() # Load .env file if present (for local development)
+
+# SECURITY WARNING: In a production environment, SECRET_KEY MUST be set via an environment variable
+# and should be a strong, randomly generated string.
+# Do not use the default value in production.
+# Example for generating a good key: openssl rand -hex 32
+SECRET_KEY = os.getenv("SECRET_KEY", "a_very_insecure_default_secret_key_for_dev_only")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+
+if SECRET_KEY == "a_very_insecure_default_secret_key_for_dev_only" and os.getenv("APP_ENV") != "development":
+    print("CRITICAL WARNING: Using default insecure SECRET_KEY in a non-development environment. This is UNSAFE.")
+    # For a real production scenario, you might want to raise an error or exit:
+    # raise ValueError("CRITICAL: SECRET_KEY is not set to a secure value in production.")
+elif SECRET_KEY == "a_very_insecure_default_secret_key_for_dev_only":
+     print("WARNING: Using default insecure SECRET_KEY. Suitable only for local development.")
+
 
 # Define oauth2_scheme, tokenUrl should match the login route
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")

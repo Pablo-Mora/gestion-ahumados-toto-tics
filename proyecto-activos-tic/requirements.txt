@@ -5,3 +5,6 @@ SQLAlchemy
 pandas
 openpyxl
 python-docx
+matplotlib
+seaborn
+python-dotenv

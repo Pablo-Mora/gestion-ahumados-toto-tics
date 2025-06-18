@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Corrected from UTF-T -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acta de Entrega de Activos</title>
+    <link rel="stylesheet" href="/static/css/acta_styles.css"> <!-- Specific styles for acta -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="toolbar">
+        <button id="downloadPdfBtn">Descargar PDF</button>
+    </div>
+    <div id="actaContent" class="acta-container">
+        <header class="acta-header">
+            <h1>Acta de Entrega de Activos TIC</h1>
+            <p>Fecha: <span id="currentDate"></span></p>
+        </header>
+        <section class="employee-details">
+            <h2>Datos del Empleado</h2>
+            <p><strong>Nombre:</strong> <span id="empNombre">Cargando...</span></p>
+            <p><strong>Identificación:</strong> <span id="empId">Cargando...</span></p>
+            <p><strong>Cargo:</strong> <span id="empCargo">Cargando...</span></p>
+            <p><strong>Departamento:</strong> <span id="empDepto">Cargando...</span></p>
+        </section>
+        <section class="asset-list" id="hardwareSection">
+            <h2>Hardware Asignado</h2>
+            <table id="hardwareTable">
+                <thead><tr><th>Tipo</th><th>Marca</th><th>Modelo</th><th>Serial</th><th>Observaciones</th></tr></thead>
+                <tbody><!-- Hardware items here --></tbody>
+            </table>
+            <p id="noHardwareMsg" style="display:none;">No hay hardware asignado.</p>
+        </section>
+        <section class="asset-list" id="licensesSection">
+            <h2>Licencias Asignadas</h2>
+            <table id="licenseTable">
+                <thead><tr><th>Software</th><th>Clave Producto (Parcial)</th><th>Tipo</th><th>Vencimiento</th></tr></thead>
+                <tbody><!-- License items here --></tbody>
+            </table>
+            <p id="noLicensesMsg" style="display:none;">No hay licencias asignadas.</p>
+        </section>
+        <section class="signatures">
+            <h2>Firmas</h2>
+            <div class="signature-block">
+                <p class="signature-line">_________________________</p>
+                <p>Firma Responsable Entrega</p>
+                <p>(<span id="entregadoPorNombre">Sistema/Administrador</span>)</p>
+            </div>
+            <div class="signature-block">
+                <p class="signature-line">_________________________</p>
+                <p>Firma Empleado Recibe</p>
+                <p>(<span id="empNombreFirma"></span>)</p>
+            </div>
+        </section>
+        <footer>
+            <p>Este documento certifica la entrega y recepción de los activos listados en buen estado y funcionamiento. El empleado se compromete a cuidar y utilizar adecuadamente los activos asignados de acuerdo con las políticas de la empresa.</p>
+        </footer>
+    </div>
+    <script src="/static/js/auth.js"></script> <!-- For getAuthToken() if needed -->
+    <script src="/static/js/acta.js"></script>
+</body>
+</html>
